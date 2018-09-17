@@ -15,11 +15,11 @@ from bs4 import BeautifulSoup
 ```python
 #инициализируем переменные, по которым будет работать парсер
 #сохраняем путь к вебдрайверу в переменную
-path_to_chromedriver = 'D:/Soft/chromedriver_win32/chromedriver.exe'
+path_to_chromedriver = 'D:/Somepath/chromedriver_win32/chromedriver.exe'
 #адрес сайта, который будем парсить
-page_link = 'https://warspot.ru/'
+page_link = 'https://somesite.ru/'
 #также, для удобства, сохраняем класс элемента, который будем парсить.
-parse_element = 'a.cm-showcase-related_link'
+parse_element = 'some-CSS-class-selector'
 #метод парсинга для BeautifulSoup 
 parsing_method = 'html.parser'
 #массив для вывода
@@ -70,7 +70,7 @@ soup = BeautifulSoup(data, parsing_method)
 #сохраняем атрибут href атрибут элемента в список, возращаем список
 def get_parse_element_to_output(output_array_arg, soup_arg):
     
-    for link in soup_arg.findAll(True,{'class': 'cm-showcase-related_link'}):
+    for link in soup_arg.findAll(True,{'class': 'some-CSS-class-selector'}):
         output_array_arg.append(link.get('href'))
     
     return output_array_arg
