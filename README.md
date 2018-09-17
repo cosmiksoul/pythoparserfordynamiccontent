@@ -11,7 +11,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup 
 ```
 
-
 ```python
 #инициализируем переменные, по которым будет работать парсер
 #сохраняем путь к вебдрайверу в переменную
@@ -26,14 +25,12 @@ parsing_method = 'html.parser'
 output_array = []
 ```
 
-
 ```python
 #подключаем вебдрайвер из селениума
 driver = webdriver.Chrome(path_to_chromedriver)
 #запускаем вебдрайвер, передаем ему адресс сайта для парсинка
 driver.get(page_link)
 ```
-
 
 ```python
 #врубаем ожидание, чтобы динамические элементы успели подгрузиться
@@ -43,26 +40,16 @@ wait = WebDriverWait(driver, 10)
 wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, parse_element)))
 ```
 
-
-
-
-    <selenium.webdriver.remote.webelement.WebElement (session="3ea81d9429666f9d85f2c4e5b10d0139", element="0.9321541506842028-1")>
-
-
-
-
 ```python
 #забираем данные со страницы в переменную, закрываем драйвер
 data = driver.page_source
 driver.close()
 ```
 
-
 ```python
 #передаем данные в BeautifulSoup , указываем, что необходимо вытащить
 soup = BeautifulSoup(data, parsing_method)
 ```
-
 
 ```python
 #функция поиска нужного контента объекте супа
@@ -76,11 +63,8 @@ def get_parse_element_to_output(output_array_arg, soup_arg):
     return output_array_arg
 ```
 
-
 ```python
 #инициализация функции, для удобства - выводим все элементы списка в одну строку с построчным разбиением
 #для этого оборачиваем функцию в конструкцию "\n".join()
 print("\n".join(get_parse_element_to_output(output_array, soup)))
 ```
-
-    
